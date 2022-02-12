@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Django搭建简易博客(2)</title>
+      <link href="/2022/02/12/django-da-jian-jian-yi-bo-ke-2/"/>
+      <url>/2022/02/12/django-da-jian-jian-yi-bo-ke-2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Django管理网站"><a href="#Django管理网站" class="headerlink" title="Django管理网站"></a>Django管理网站</h2><h3 id="创建超级用户"><a href="#创建超级用户" class="headerlink" title="创建超级用户"></a>创建超级用户</h3><p>Django 允许创建具备所有权限的用户，即<strong>超级用户</strong>。<strong>权限</strong>决定了用户可执行的操作。注册用户通常可以阅读自己的私有数据，还可以查看一些只有会员才能查看的信息。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python manage.py createsuperuser<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>执行命令<code>createsuperuser</code>时，Django 会提示输入超级用户的用户名，邮箱（可为空），以及两次密码。</p><h3 id="向管理网站注册模型"><a href="#向管理网站注册模型" class="headerlink" title="向管理网站注册模型"></a>向管理网站注册模型</h3><p>Django 自动在管理网站中添加了一些模型， 如 User 和 Group， 但对于我们创建的模型，必须手工进行注册。</p><p>在 blog 的 <code>admin.py</code> 中，注册模型 <code>BlogPost</code>：</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin<span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> BlogPost<span class="token comment"># Register your models here.</span>admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>BlogPost<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> django </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Django搭建简易博客(1)</title>
       <link href="/2022/02/11/django-da-jian-jian-yi-bo-ke-1/"/>
       <url>/2022/02/11/django-da-jian-jian-yi-bo-ke-1/</url>
