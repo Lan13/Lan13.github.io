@@ -402,7 +402,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-12
+                    2022-02-21
                 </div>
                 
 
@@ -467,7 +467,36 @@ urlpatterns <span class="token operator">=</span> <span class="token punctuation
     <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'blogs/new_blog.html'</span><span class="token punctuation">,</span> context<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>我们导入了函数 <code>redirect</code> ，用户提交文章后将会使用这个函数重定向到页面 blog 。函数 <code>redirect</code> 将视图名作为参数，并将用户重定向到这个视图。</p>
-<h3 id="GET请求和POST请求"><a href="#GET请求和POST请求" class="headerlink" title="GET请求和POST请求"></a>GET请求和POST请求</h3>
+<h3 id="GET请求和POST请求"><a href="#GET请求和POST请求" class="headerlink" title="GET请求和POST请求"></a>GET请求和POST请求</h3><blockquote>
+<p>摸鱼很久之后来更新一下QwQ，同时也是因为刚开学没什么事情要做</p>
+</blockquote>
+<p>创建 Web 应用程序时，将用到的两种请求类型是 GET 请求和 POST 请求。对于只是从服务器读取数据的页面，使用 GET 请求；在用户需要通过表单提交信息时，通常使用 POST 请求。</p>
+<p>函数 <code>new_blog()</code> 将请求对象作为参数。用户初次请求该页面时，其浏览器会发送 GET 请求；用户填写并提交表单时，其浏览器会发送 POST 请求。</p>
+<p>首先测试请求方法是 GET 还是 POST。如果请求方法不是 POST，请求就可能是GET，因此需要返回一个空表单。下面创建一个 <code>BlogForm</code> 实例，将其赋给变量 <code>form</code> ，再通过上下文字典 <code>context</code> 将这个表单发送给模板。</p>
+<p>要将提交的信息保存到数据库，必须先通过检查确定它们是有效的。方法 <code>is_valid()</code> 核实用户填写了所有必不可少的字段，且与输入字段要求的字段类型一样，则可以调用 <code>save()</code> 保存到数据库。接着可以使用 <code>redirect()</code> 将用户的浏览器重定向到页面新创建的博客页面 <code>blog</code> 。</p>
+<h3 id="模板-new-blog"><a href="#模板-new-blog" class="headerlink" title="模板 new_blog"></a>模板 new_blog</h3><p>在 <code>templates/blogs</code> 创建模板为 <code>templates/blogs/new_blog.html</code>:</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">{% extends "blogs/base.html" %}
+
+{% block content %}
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{% url <span class="token punctuation">'</span>blogs:new_blog<span class="token punctuation">'</span> %}<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    {% csrf_token %}
+    {% form.as_p %}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Add blog<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+{% endblock content %}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这个模板继承了 <code>base.html</code>，因此其基本结构与其他界面相同。实参 <code>action</code> 告诉服务器将提交的表单数据发送到哪里。这里将它发给视图函数 <code>new_blog()</code> 。实参 <code>method</code> 让浏览器以 POST 请求的方式提交数据。</p>
+<p>Django 使用模板标签 <code>{% csrf_token %}</code> 来防止攻击者利用表单来获得对服务器未经授权的访问。<code>{{ form.as_p }}</code> 可以让 Django 自动创建显示表单所需的全部字段。修饰符 <code>as_p</code> 让 Django 以<strong>段落</strong>格式渲染所有表单元素。</p>
+<h3 id="链接到页面-new-blog"><a href="#链接到页面-new-blog" class="headerlink" title="链接到页面 new_blog"></a>链接到页面 new_blog</h3><p>在页面 <code>blogs</code> 中添加到页面 <code>new_blog</code> 的链接：</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">{% extends "blogs/base.html" %}
+{% block content %}
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+        -- snip --
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{% url <span class="token punctuation">'</span>blogs:new_blog<span class="token punctuation">'</span> %}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>New blog<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+{% endblock content %}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
