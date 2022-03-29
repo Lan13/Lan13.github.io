@@ -12,7 +12,8 @@
     
 
 
-设计时使用参数 parameter WIDTH = 32， 可以方便例化不同位宽数据，提高 AL">
+
+设计时使用参数 parameter WIDTH = 32， 可以方便例化不同位宽数据，提高 A">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -433,9 +434,10 @@
                 <h1 id="Lab1-实验报告"><a href="#Lab1-实验报告" class="headerlink" title="Lab1 实验报告"></a>Lab1 实验报告</h1><p>[TOC]</p>
 <h2 id="1-ALU模块的逻辑设计和仿真"><a href="#1-ALU模块的逻辑设计和仿真" class="headerlink" title="1. ALU模块的逻辑设计和仿真"></a>1. ALU模块的逻辑设计和仿真</h2><h3 id="1-1-逻辑设计"><a href="#1-1-逻辑设计" class="headerlink" title="1.1 逻辑设计"></a>1.1 逻辑设计</h3><p>由 ALU 的<strong>状态转化图</strong>（是否叫这个）</p>
 <center class="half">
-    <img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\alu_fun.png" width="250">
-    <img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\f_type.png" width="300">
+    <img src="..\images\codH-lab1\alu_fun.png" width="250">
+    <img src="..\images\codH-lab1\f_type.png" width="300">
 </center>
+
 
 <p>设计时使用参数 <code>parameter WIDTH = 32</code>， 可以方便例化不同位宽数据，提高 ALU 模块的使用率。通过组合逻辑，使用 <code>case(s)</code> 进行功能选择，对应到不同的运算，实现 ALU 的功能。</p>
 <p>对于运算结果 y 的计算，直接使用 verilog 中的运算符进行赋值即可，即采取此类方法： <code>y = a (opcode) b</code>。</p>
@@ -543,22 +545,25 @@
 
 <h3 id="1-3-仿真结果"><a href="#1-3-仿真结果" class="headerlink" title="1.3 仿真结果"></a>1.3 仿真结果</h3><p>对 ALU 进行4组数据测，前两组是位宽为3的数据，后两组是位宽为8的数据：</p>
 <center class="half">
-    <img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\alu_sim1.png" width="275">
-    <img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\alu_sim2.png" width="275">
+    <img src="..\images\codH-lab1\alu_sim1.png" width="275">
+    <img src="..\images\codH-lab1\alu_sim2.png" width="275">
 </center>
+
 
 
 <center class="half">
-    <img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\alu_sim3.png" width="275">
-    <img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\alu_sim4.png" width="275">
+    <img src="..\images\codH-lab1\alu_sim3.png" width="275">
+    <img src="..\images\codH-lab1\alu_sim4.png" width="275">
 </center>
+
 
 
 
 <h2 id="2-6位ALU的下载测试"><a href="#2-6位ALU的下载测试" class="headerlink" title="2. 6位ALU的下载测试"></a>2. 6位ALU的下载测试</h2><h3 id="2-1-逻辑设计"><a href="#2-1-逻辑设计" class="headerlink" title="2.1 逻辑设计"></a>2.1 逻辑设计</h3><p>根据 PPT 给出的数据通路，可以分析出我们需要使用5个复位使能的 D 触发器和由前面设计的 ALU 模块：</p>
  <center class="half">
-    <img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\alu_datapath.png" width="500">
+    <img src="..\images\codH-lab1\alu_datapath.png" width="500">
 </center>
+
 
 <p>则我们需要设计一个复位使能的 D 触发器，再将其例化组合就可以得到6位 ALU 的模块。</p>
 <p>鉴于这一部分比较简单，就不再赘述相关设计。</p>
@@ -602,9 +607,10 @@
 
 <h3 id="2-3-仿真结果和下载测试"><a href="#2-3-仿真结果和下载测试" class="headerlink" title="2.3 仿真结果和下载测试"></a>2.3 仿真结果和下载测试</h3><h4 id="2-3-1-仿真结果"><a href="#2-3-1-仿真结果" class="headerlink" title="2.3.1 仿真结果"></a>2.3.1 仿真结果</h4><p>对6位 ALU 赋两组数据：</p>
 <center class="half">
-    <img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\6alu_sim1.png" width="275">
-    <img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\6alu_sim2.png" width="275">
+    <img src="..\images\codH-lab1\6alu_sim1.png" width="275">
+    <img src="..\images\codH-lab1\6alu_sim2.png" width="275">
 </center>
+
 
 
 <h4 id="2-3-2-下载测试"><a href="#2-3-2-下载测试" class="headerlink" title="2.3.2 下载测试"></a>2.3.2 下载测试</h4><p>编写约束文件如下，将数据链接到对应管脚（如6位 ALU 的数据通路图）：</p>
@@ -643,47 +649,47 @@ set_property <span class="token operator">-</span>dict <span class="token operat
 set_property <span class="token operator">-</span>dict <span class="token operator">{</span> PACKAGE_PIN V14 IOSTANDARD LVCMOS33 <span class="token operator">}</span> <span class="token punctuation">[</span>get_ports <span class="token operator">{</span> f<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>有符号小于示例：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\6alu_1.png" width="400">
+<img src="..\images\codH-lab1\6alu_1.png" width="400">
 
 <p>无符号小于示例：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\6alu_2.png" width="400">
+<img src="..\images\codH-lab1\6alu_2.png" width="400">
 
 <p>加法：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\6alu_3.png" width="400">
+<img src="..\images\codH-lab1\6alu_3.png" width="400">
 
 <p>与运算：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\6alu_4.png" width="400">
+<img src="..\images\codH-lab1\6alu_4.png" width="400">
 
 <p>或运算：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\6alu_5.png" width="400">
+<img src="..\images\codH-lab1\6alu_5.png" width="400">
 
 <p>异或运算：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\6alu_6.png" width="400">
+<img src="..\images\codH-lab1\6alu_6.png" width="400">
 
 <p>左移：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\6alu_7.png" width="400">
+<img src="..\images\codH-lab1\6alu_7.png" width="400">
 
 <p>右移：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\6alu_8.png" width="400">
+<img src="..\images\codH-lab1\6alu_8.png" width="400">
 
 
-<h3 id="2-4-电路资源和时间性能"><a href="#2-4-电路资源和时间性能" class="headerlink" title="2.4 电路资源和时间性能"></a>2.4 电路资源和时间性能</h3><h4 id="2-4-1-RTL电路图"><a href="#2-4-1-RTL电路图" class="headerlink" title="2.4.1 RTL电路图"></a>2.4.1 RTL电路图</h4><img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\RTL_schematic.png" width="600">
+<h3 id="2-4-电路资源和时间性能"><a href="#2-4-电路资源和时间性能" class="headerlink" title="2.4 电路资源和时间性能"></a>2.4 电路资源和时间性能</h3><h4 id="2-4-1-RTL电路图"><a href="#2-4-1-RTL电路图" class="headerlink" title="2.4.1 RTL电路图"></a>2.4.1 RTL电路图</h4><img src="..\images\codH-lab1\RTL_schematic.png" width="600">
 
 <p>可以看出，这个 RTL 电路图和 PPT 中所给出的电路图几乎是吻合的，其结构形式是一致的。</p>
-<h4 id="2-4-2-综合电路"><a href="#2-4-2-综合电路" class="headerlink" title="2.4.2 综合电路"></a>2.4.2 综合电路</h4><img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\schematic.png" width="600">
+<h4 id="2-4-2-综合电路"><a href="#2-4-2-综合电路" class="headerlink" title="2.4.2 综合电路"></a>2.4.2 综合电路</h4><img src="..\images\codH-lab1\schematic.png" width="600">
 
-<h4 id="2-4-3-电路资源"><a href="#2-4-3-电路资源" class="headerlink" title="2.4.3 电路资源"></a>2.4.3 电路资源</h4><img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\utilization.png" width="800">
+<h4 id="2-4-3-电路资源"><a href="#2-4-3-电路资源" class="headerlink" title="2.4.3 电路资源"></a>2.4.3 电路资源</h4><img src="..\images\codH-lab1\utilization.png" width="800">
 
-<h4 id="2-4-4-电路性能"><a href="#2-4-4-电路性能" class="headerlink" title="2.4.4 电路性能"></a>2.4.4 电路性能</h4><img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\Timings.png" width="800">
+<h4 id="2-4-4-电路性能"><a href="#2-4-4-电路性能" class="headerlink" title="2.4.4 电路性能"></a>2.4.4 电路性能</h4><img src="..\images\codH-lab1\Timings.png" width="800">
 
 <p>可以看出，Slack 还剩余 6.219秒，电路性能良好。</p>
 <h2 id="3-FLS的逻辑设计、仿真和下载测试"><a href="#3-FLS的逻辑设计、仿真和下载测试" class="headerlink" title="3. FLS的逻辑设计、仿真和下载测试"></a>3. FLS的逻辑设计、仿真和下载测试</h2><h3 id="3-1-逻辑设计"><a href="#3-1-逻辑设计" class="headerlink" title="3.1 逻辑设计"></a>3.1 逻辑设计</h3><h4 id="3-1-1-数据通路"><a href="#3-1-1-数据通路" class="headerlink" title="3.1.1 数据通路"></a>3.1.1 数据通路</h4><p>从所需的实现功能考虑，首先要能够存储前两次的输入数据（即初始数据），所以我们采用两个寄存器分别为 reg_a 和 reg_b 。然后再接下来的操作中，每次按下使能键时，都可以产生一个新的斐波那契数并且显示出来。所以需要使用 D 触发器来进行 “保留” 数据。为了能够在正确次序中显示正确的斐波那契数，还应该为输出结果加上数据选择器进行选择。同理，再后续的操作中，与输入 d 数据无关，所以对于 reg_a 和 reg_b ，也需要使用数据选择器进行选择：在初始阶段时，选择输入 d ，而在后续阶段时，把数据进行 “移位” 操作，只需要保存计算下一个斐波那契数的两个数据即可。为了能够对其进行选择，我们还使用了一个计数器 reg_cnt 进行计数，以完成对数据的选择和分配。</p>
 <p>经过多次尝试设计，最终设计出来的数据通路图如下（省略了一些不是很重要的部分，例如 clk，rstn 等等）：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_datapath.png" width="700">
+<img src="..\images\codH-lab1\fls_datapath.png" width="700">
 
 <h4 id="3-1-2-状态转化"><a href="#3-1-2-状态转化" class="headerlink" title="3.1.2 状态转化"></a>3.1.2 状态转化</h4><p>初始状态时， <code>reg_cnt = 2'b00</code>，此时我需要在 en 按钮按下时（此时 <code>reg_cnt = 2'b01</code>），将 d 数据存储到 reg_a 中，那么下一次 en 按钮按下之前，应该把 d 数据分配到 mux_b 中，再按下 en 按钮时 （此时 <code>reg_cnt = 2'b10</code>），将 d 数据存储到 reg_b 中，而再后续的操作中，都与 d 不再有任何关系了，所以可以保持计数器不变。同时可以看出，将 ALU 的计算结果存储到了 reg_b 当中，那么输出 y 只需要在 reg_a 和 reg_b 当中选择即可。</p>
 <p>由上述分析，可以得知 reg_cnt 的变化就是一个状态转化的过程。用状态图总结上述就是：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_state.png" width="700">
+<img src="..\images\codH-lab1\fls_state.png" width="700">
 
 <p><strong>当然，当 rstn 有效时，一切全部归0。</strong></p>
 <h4 id="3-1-3-去除毛刺"><a href="#3-1-3-去除毛刺" class="headerlink" title="3.1.3 去除毛刺"></a>3.1.3 去除毛刺</h4><p>由于使能信号以及复位信号都是由按钮进行的，所以难免会出现毛刺，所以我们需要对输入的信号进行去除毛刺处理。采用上学期数电实验的方法：</p>
@@ -820,9 +826,9 @@ set_property <span class="token operator">-</span>dict <span class="token operat
 <span class="token keyword">endmodule</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="3-3-仿真结果和下载测试"><a href="#3-3-仿真结果和下载测试" class="headerlink" title="3.3 仿真结果和下载测试"></a>3.3 仿真结果和下载测试</h3><h4 id="3-3-1-仿真结果"><a href="#3-3-1-仿真结果" class="headerlink" title="3.3.1 仿真结果"></a>3.3.1 仿真结果</h4><p>选用两组数据 <code>16'b1, 16'b10</code> 和 <code>16'b1, 16'b11</code> 进行仿真，仿真结果如下：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_simulation.png" width="700">
+<img src="..\images\codH-lab1\fls_simulation.png" width="700">
 
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_simulation2.png" width="700">
+<img src="..\images\codH-lab1\fls_simulation2.png" width="700">
 
 <h4 id="3-3-2-下载测试"><a href="#3-3-2-下载测试" class="headerlink" title="3.3.2 下载测试"></a>3.3.2 下载测试</h4><p>编写约束文件如下，将数据链接到对应管脚</p>
 <pre class="line-numbers language-verilog" data-language="verilog"><code class="language-verilog">set_property <span class="token operator">-</span>dict <span class="token operator">{</span> PACKAGE_PIN E3 IOSTANDARD LVCMOS33 <span class="token operator">}</span> <span class="token punctuation">[</span>get_ports <span class="token operator">{</span> clk <span class="token operator">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -865,29 +871,29 @@ set_property <span class="token operator">-</span>dict <span class="token operat
 set_property <span class="token operator">-</span>dict <span class="token operator">{</span> PACKAGE_PIN H17 IOSTANDARD LVCMOS33 <span class="token operator">}</span> <span class="token punctuation">[</span>get_ports <span class="token operator">{</span> y<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>输入第一个数字1：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_1.png" width="400">
+<img src="..\images\codH-lab1\fls_1.png" width="400">
 
 <p>输入第二个数2：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_2.png" width="400">
+<img src="..\images\codH-lab1\fls_2.png" width="400">
 
 <p>开始计算斐波那契数：</p>
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_3.png" width="400">
+<img src="..\images\codH-lab1\fls_3.png" width="400">
 
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_4.png" width="400">
+<img src="..\images\codH-lab1\fls_4.png" width="400">
 
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_5.png" width="400">
+<img src="..\images\codH-lab1\fls_5.png" width="400">
 
-<h3 id="3-4-电路资源和时间性能"><a href="#3-4-电路资源和时间性能" class="headerlink" title="3.4 电路资源和时间性能"></a>3.4 电路资源和时间性能</h3><h4 id="3-4-1-RTL电路图"><a href="#3-4-1-RTL电路图" class="headerlink" title="3.4.1 RTL电路图"></a>3.4.1 RTL电路图</h4><img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_rtl1.png" width="600">
+<h3 id="3-4-电路资源和时间性能"><a href="#3-4-电路资源和时间性能" class="headerlink" title="3.4 电路资源和时间性能"></a>3.4 电路资源和时间性能</h3><h4 id="3-4-1-RTL电路图"><a href="#3-4-1-RTL电路图" class="headerlink" title="3.4.1 RTL电路图"></a>3.4.1 RTL电路图</h4><img src="..\images\codH-lab1\fls_rtl1.png" width="600">
 
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_rtl2.png" width="600">
+<img src="..\images\codH-lab1\fls_rtl2.png" width="600">
 
-<img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_rtl3.png" width="600">
+<img src="..\images\codH-lab1\fls_rtl3.png" width="600">
 
-<h4 id="3-4-2-综合电路"><a href="#3-4-2-综合电路" class="headerlink" title="3.4.2 综合电路"></a>3.4.2 综合电路</h4><img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_schematic.png" width="600">
+<h4 id="3-4-2-综合电路"><a href="#3-4-2-综合电路" class="headerlink" title="3.4.2 综合电路"></a>3.4.2 综合电路</h4><img src="..\images\codH-lab1\fls_schematic.png" width="600">
 
-<h4 id="3-4-3-电路资源"><a href="#3-4-3-电路资源" class="headerlink" title="3.4.3 电路资源"></a>3.4.3 电路资源</h4><img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_utilization.png" width="600">
+<h4 id="3-4-3-电路资源"><a href="#3-4-3-电路资源" class="headerlink" title="3.4.3 电路资源"></a>3.4.3 电路资源</h4><img src="..\images\codH-lab1\fls_utilization.png" width="600">
 
-<h4 id="3-4-4-电路性能"><a href="#3-4-4-电路性能" class="headerlink" title="3.4.4 电路性能"></a>3.4.4 电路性能</h4><img src="C:\Users\蓝\Desktop\md文档\计组H图片\Lab1\fls_timing.png" width="600">
+<h4 id="3-4-4-电路性能"><a href="#3-4-4-电路性能" class="headerlink" title="3.4.4 电路性能"></a>3.4.4 电路性能</h4><img src="..\images\codH-lab1\fls_timing.png" width="600">
 
 <h2 id="4-实验总结"><a href="#4-实验总结" class="headerlink" title="4. 实验总结"></a>4. 实验总结</h2><ol>
 <li><p>本次实验进行了 ALU 模块的编写，FLS 的应用，对 Verilog 设计语言起了一定的复习作用。同时温故了几种常见的信号处理技巧，例如信号整形去除毛刺、取信号上下边缘技巧。并且巩固了状态机的设计方法，最终能够将实现功能在开发板上体现出来，本次实验采用的就是摩尔型电路来对 FLS 进行设计。最后还学习了一些新的知识。包括数据通路和控制器的设计方法和了解查看电路性能和资源使用情况。在实现 FLS 过程中，需要自己凭借状态机来实现数据通路的设计。然后可以通过查看电路性能和资源使用情况，了解自己设计的电路图的优良性以及可行性。</p>
